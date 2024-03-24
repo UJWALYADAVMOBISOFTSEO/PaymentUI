@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paymentapptask/Global/colors.dart';
+import 'package:paymentapptask/Screens/HomePage.dart';
 import 'package:simple_ripple_animation/simple_ripple_animation.dart';
 
+import '../CommonWidgets/image_helper.dart';
+
 class Payment extends StatelessWidget {
-  const Payment({super.key});
+  final String imageUrl;
+  final String name;
+
+  const Payment({super.key, required this.imageUrl, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +23,29 @@ class Payment extends StatelessWidget {
             const SizedBox(
               height: 100,
             ),
-            const Expanded(
+            Expanded(
               flex: 1,
               child: RippleAnimation(
                 color: Colors.white,
-                delay: Duration(milliseconds: 600),
+                delay: const Duration(milliseconds: 600),
                 repeat: true,
                 minRadius: 120,
                 ripplesCount: 2,
-                duration: Duration(milliseconds: 6 * 300),
-                child: CircleAvatar(
-                  minRadius: 100,
-                  maxRadius: 100,
-                  backgroundImage: NetworkImage(
-                      'https://images.vexels.com/media/users/3/147101/isolated/preview/b4a49d4b864c74bb73de63f080ad7930-instagram-profile-button.png'),
+                duration: const Duration(milliseconds: 6 * 300),
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  decoration: const BoxDecoration(
+                      color: Colors.white, shape: BoxShape.circle),
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: ImageHelper(
+                      image: imageUrl,
+                      imageType: ImageType.asset,
+                      alignment: Alignment.center,
+                      imageShape: ImageShape.circle,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -48,7 +63,7 @@ class Payment extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    'Ujwal Yadav',
+                    name,
                     style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontSize: 26,
@@ -57,20 +72,25 @@ class Payment extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    width: 200,
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Cancel Payment',
-                          style: GoogleFonts.poppins(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 200,
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Cancel Payment',
+                            style: GoogleFonts.poppins(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),

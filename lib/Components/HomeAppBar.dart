@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:paymentapptask/Screens/Profile.dart';
 
 import '../CommonWidgets/image_helper.dart';
 import '../Global/colors.dart';
+import '../Modals/ProfileModal.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -27,7 +29,7 @@ class HomeAppBar extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: TextField(
-                    scrollPadding: EdgeInsets.only(bottom: 90),
+                    scrollPadding: const EdgeInsets.only(bottom: 90),
                     cursorColor: DARKGREY,
                     style: const TextStyle(color: DARKGREY),
                     decoration: InputDecoration(
@@ -109,11 +111,21 @@ class HomeAppBar extends StatelessWidget {
                               flex: 13,
                               child: Row(
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     flex: 1,
-                                    child: ImageHelper(
-                                      image: 'assets/images/AdminProfile.png',
-                                      imageType: ImageType.asset,
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          shape: BoxShape.circle),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(3.0),
+                                        child: ImageHelper(
+                                          image:
+                                              'assets/images/AdminProfile.png',
+                                          imageType: ImageType.asset,
+                                          imageShape: ImageShape.circle,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   Expanded(
@@ -243,47 +255,67 @@ class HomeAppBar extends StatelessWidget {
                           Expanded(
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: 10,
+                              itemCount: profileScreenModal.length,
                               itemBuilder: (context, index) {
-                                return SizedBox(
-                                  width: 90,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 65,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(3.0),
-                                          child: ImageHelper(
-                                            image:
-                                                'assets/images/AdminProfile.png',
-                                            imageType: ImageType.asset,
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (context) => ProfilePage(
+                                                  imageUrl:
+                                                      profileScreenModal[index]
+                                                          .url,
+                                                  name:
+                                                      profileScreenModal[index]
+                                                          .name,
+                                                  email:
+                                                      profileScreenModal[index]
+                                                          .email,
+                                                )));
+                                  },
+                                  child: SizedBox(
+                                    width: 90,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 65,
+                                          width: 65,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(3.0),
+                                            child: ImageHelper(
+                                              image:
+                                                  profileScreenModal[index].url,
+                                              imageType: ImageType.asset,
+                                              imageShape: ImageShape.circle,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 1, right: 1),
-                                        child: Wrap(
-                                          children: [
-                                            Text(
-                                              'Ujwal Yadav',
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 14,
-                                                  color: DARKGREY,
-                                                  fontWeight: FontWeight.bold),
-                                            )
-                                          ],
+                                        const SizedBox(
+                                          height: 10,
                                         ),
-                                      )
-                                    ],
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 1, right: 1),
+                                          child: Wrap(
+                                            children: [
+                                              Text(
+                                                profileScreenModal[index].name,
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 14,
+                                                    color: DARKGREY,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 );
                               },

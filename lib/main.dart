@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:paymentapptask/Global/colors.dart';
 import 'package:paymentapptask/Screens/HomePage.dart';
+import 'package:paymentapptask/Screens/Profile.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import 'Screens/Payment.dart';

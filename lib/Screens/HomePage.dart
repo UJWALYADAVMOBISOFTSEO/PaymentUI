@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paymentapptask/Global/colors.dart';
+import 'package:paymentapptask/Modals/HomeModal.dart';
 
 import '../CommonWidgets/image_helper.dart';
 import '../Components/HomeAppBar.dart';
@@ -43,12 +44,12 @@ class HomePage extends StatelessWidget {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   Text(
-                                    "Apple MacBook Pro 16' - Sliver",
+                                    homeScreenModal[index].title,
                                     style: GoogleFonts.poppins(
                                         color: Colors.black, fontSize: 18),
                                   ),
                                   Text(
-                                    'Apple Store',
+                                    homeScreenModal[index].subTitle,
                                     style: GoogleFonts.poppins(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
                                   SizedBox(
                                     width: 300,
                                     child: Text(
-                                      'Return Time Remaining 2 Weeks 1342 Colorado Street, Suite 32 - 92003',
+                                      homeScreenModal[index].description,
                                       style: GoogleFonts.poppins(
                                           color: DARKGREY, fontSize: 18),
                                       overflow: TextOverflow.ellipsis,
@@ -71,7 +72,7 @@ class HomePage extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.topCenter,
                                 child: Text(
-                                  '\$3,234.03',
+                                  homeScreenModal[index].price,
                                   style: GoogleFonts.poppins(
                                       color: Colors.black,
                                       fontSize: 17,
@@ -82,7 +83,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  childCount: 51,
+                  childCount: homeScreenModal.length,
                 ),
               ),
             ],
