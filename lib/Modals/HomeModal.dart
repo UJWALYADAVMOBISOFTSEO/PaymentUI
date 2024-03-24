@@ -44,14 +44,14 @@ List<homeModal> homeScreenModal = <homeModal>[
   homeModal(
     id: "5",
     title: "Gental Men",
-    subTitle: 'Louis Philippe',
+    subTitle: 'Auroza',
     description: 'Return Time Remaining 1 Weeks 8 Ambernath, Mumbai - 421502',
     price: '\$1,001.00',
   ),
   homeModal(
     id: "6",
     title: "Cooles Finds",
-    subTitle: 'Arrow',
+    subTitle: 'Advanze',
     description: 'Return Time Remaining 2 Weeks 7 Dadar, Mumbai - 421901',
     price: '\$3,301.20',
   ),

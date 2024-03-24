@@ -84,12 +84,14 @@ class _HomePageState extends State<HomePage> {
                   slivers: <Widget>[
                     // const HomeAppBar(),
                     SliverAppBar(
+                        automaticallyImplyLeading: false,
                         snap: false,
                         pinned: true,
                         floating: true,
                         expandedHeight: 610,
                         backgroundColor: Colors.white,
                         bottom: AppBar(
+                          automaticallyImplyLeading: false,
                           toolbarHeight: 150,
                           backgroundColor: Colors.white,
                           flexibleSpace: Column(

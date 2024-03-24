@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paymentapptask/Global/colors.dart';
 import 'package:paymentapptask/Screens/HomePage.dart';
+import 'package:paymentapptask/Screens/Payment.dart';
+import 'package:paymentapptask/Screens/Profile.dart';
 
 class BottomTabScreen extends StatefulWidget {
   const BottomTabScreen({Key? key}) : super(key: key);
@@ -16,8 +18,12 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
   final pages = [
     const HomePage(),
     const Page2(),
-    const Page3(),
-    const Page4(),
+    const Payment(
+        imageUrl: 'assets/images/AdminProfile.png', name: 'Ujwal Yadav'),
+    const ProfilePage(
+        imageUrl: 'assets/images/AdminProfile.png',
+        name: 'Ujwal Yadav',
+        email: 'ujwalYadav27@gmail.com'),
   ];
 
   @override

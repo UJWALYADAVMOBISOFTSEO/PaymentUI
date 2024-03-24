@@ -229,28 +229,42 @@ class _ProfilePageState extends State<ProfilePage> {
                                 key: ValueKey(_foundUsers[index]["id"]),
                                 padding: const EdgeInsets.only(
                                     top: 8.0, bottom: 8.0, left: 18, right: 18),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        color: GREY,
-                                        width: 1.0,
+                                child: InkWell(
+                                  onTap: () {
+                                    debugPrint(index.toString());
+                                    if (index.toString() == "3" ||
+                                        index.toString() == "4") {
+                                      Navigator.of(context)
+                                          .pushReplacement(MaterialPageRoute(
+                                              builder: (context) => Payment(
+                                                    imageUrl: widget.imageUrl,
+                                                    name: widget.name,
+                                                  )));
+                                    }
+                                  },
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: GREY,
+                                          width: 1.0,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  child: ListTile(
-                                    leading: Icon(
-                                      _foundUsers[index]['icon'],
-                                      color: Colors.grey,
-                                    ),
-                                    title: Text(
-                                      _foundUsers[index]['name'].toString(),
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 18, color: Colors.black),
-                                    ),
-                                    trailing: const Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: Colors.blue,
+                                    child: ListTile(
+                                      leading: Icon(
+                                        _foundUsers[index]['icon'],
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text(
+                                        _foundUsers[index]['name'].toString(),
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 18, color: Colors.black),
+                                      ),
+                                      trailing: const Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Colors.blue,
+                                      ),
                                     ),
                                   ),
                                 ),

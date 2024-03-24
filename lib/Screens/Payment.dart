@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paymentapptask/Global/colors.dart';
+import 'package:paymentapptask/Screens/BottomTab.dart';
 import 'package:paymentapptask/Screens/HomePage.dart';
 import 'package:simple_ripple_animation/simple_ripple_animation.dart';
 
@@ -74,7 +75,9 @@ class Payment extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const BottomTabScreen()));
                     },
                     child: Container(
                       width: 200,
