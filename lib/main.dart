@@ -7,6 +7,8 @@ import 'package:responsive_framework/responsive_wrapper.dart';
 
 import 'Screens/BottomTab.dart';
 import 'Screens/Payment.dart';
+import 'Screens/ShimmerEffects/ShimmerEffectProfileScreen.dart';
+import 'Screens/ShimmerEffects/ShimmerEffectScreen.dart';
 
 void main() {
   runApp(const MyApp());
