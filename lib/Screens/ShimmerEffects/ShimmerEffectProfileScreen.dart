@@ -31,103 +31,18 @@ class _LoadingListPageProfileState extends State<LoadingListPageProfile> {
                       height: 300,
                       color: Colors.white,
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Colors.white,
+                    const SizedBox(height: 20),
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 12,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          height: 50,
+                          color: Colors.white,
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                        );
+                      },
                     ),
                   ],
                 ),

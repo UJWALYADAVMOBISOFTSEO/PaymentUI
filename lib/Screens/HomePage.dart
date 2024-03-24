@@ -6,7 +6,6 @@ import 'package:paymentapptask/Modals/HomeModal.dart';
 import 'package:paymentapptask/Screens/ShimmerEffects/ShimmerEffectScreen.dart';
 
 import '../CommonWidgets/image_helper.dart';
-import '../Components/HomeAppBar.dart';
 import '../Modals/ProfileModal.dart';
 import 'Profile.dart';
 
@@ -29,28 +28,23 @@ class _HomePageState extends State<HomePage> {
           })
       .toList();
 
-  // This list holds the data for the list view
   List<Map<String, dynamic>> _foundUsers = [];
 
   @override
   void initState() {
     // TODO: implement initState
-    // Simulate loading for 5 seconds
     Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _isLoading = false;
       });
     });
-    // at the beginning, all users are shown
     _foundUsers = _allUsers;
     super.initState();
   }
 
-  // This function is called whenever the text field changes
   void _runFilter(String enteredKeyword) {
     List<Map<String, dynamic>> results = [];
     if (enteredKeyword.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
       results = _allUsers;
     } else {
       results = _allUsers
@@ -58,10 +52,7 @@ class _HomePageState extends State<HomePage> {
               .toLowerCase()
               .contains(enteredKeyword.toLowerCase()))
           .toList();
-      // we use the toLowerCase() method to make it case-insensitive
     }
-
-    // Refresh the UI
     setState(() {
       _foundUsers = results;
     });
@@ -82,7 +73,6 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: Colors.white,
                 body: CustomScrollView(
                   slivers: <Widget>[
-                    // const HomeAppBar(),
                     SliverAppBar(
                         automaticallyImplyLeading: false,
                         snap: false,
@@ -99,8 +89,7 @@ class _HomePageState extends State<HomePage> {
                             children: <Widget>[
                               Container(
                                 height: 95,
-                                color:
-                                    Colors.white, // Color of the red container
+                                color: Colors.white,
                                 child: Padding(
                                   padding: const EdgeInsets.all(18.0),
                                   child: TextField(

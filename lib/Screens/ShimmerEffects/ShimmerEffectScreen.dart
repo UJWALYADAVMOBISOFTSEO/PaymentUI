@@ -41,23 +41,17 @@ class _LoadingListPageState extends State<LoadingListPage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 150,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 150,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 150,
-                      color: Colors.white,
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 4,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          height: 150,
+                          color: Colors.white,
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                        );
+                      },
                     ),
                   ],
                 ),

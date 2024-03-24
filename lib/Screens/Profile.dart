@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paymentapptask/Modals/AccountModal.dart';
-import 'package:paymentapptask/Modals/ProfileModal.dart';
 import 'package:paymentapptask/Screens/Payment.dart';
 import 'package:paymentapptask/Screens/ShimmerEffects/ShimmerEffectProfileScreen.dart';
 
@@ -34,13 +33,11 @@ class _ProfilePageState extends State<ProfilePage> {
           })
       .toList();
 
-  // This list holds the data for the list view
   List<Map<String, dynamic>> _foundUsers = [];
 
   @override
   void initState() {
     // TODO: implement initState
-    // at the beginning, all users are shown
     _foundUsers = _allUsers;
     Future.delayed(const Duration(seconds: 2), () {
       setState(() {
@@ -53,17 +50,13 @@ class _ProfilePageState extends State<ProfilePage> {
   void _runFilter(String enteredKeyword) {
     List<Map<String, dynamic>> results = [];
     if (enteredKeyword.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
       results = _allUsers;
     } else {
       results = _allUsers
           .where((user) =>
               user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
           .toList();
-      // we use the toLowerCase() method to make it case-insensitive
     }
-
-    // Refresh the UI
     setState(() {
       _foundUsers = results;
     });
@@ -201,22 +194,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Positioned(
                                     top: 40,
                                     right: 20,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.of(context)
-                                            .pushReplacement(MaterialPageRoute(
-                                                builder: (context) => Payment(
-                                                      imageUrl: widget.imageUrl,
-                                                      name: widget.name,
-                                                    )));
-                                      },
-                                      child: Text(
-                                        'Log Out',
-                                        style: GoogleFonts.poppins(
-                                            color: Colors.blue,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                    child: Text(
+                                      'Log Out',
+                                      style: GoogleFonts.poppins(
+                                          color: Colors.blue,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
                                     ))
                               ],
                             ),

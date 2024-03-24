@@ -145,53 +145,9 @@ class Page2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: DARKGREY,
-      child: Center(
+      child: const Center(
         child: Text(
           "Yet To Implement \n Scan Receipt",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: GREY,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page3 extends StatelessWidget {
-  const Page3({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: DARKGREY,
-      child: Center(
-        child: Text(
-          "Yet To Implement \n Send & Request",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: GREY,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page4 extends StatelessWidget {
-  const Page4({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: DARKGREY,
-      child: Center(
-        child: Text(
-          "Yet To Implement \n Settings",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: GREY,
