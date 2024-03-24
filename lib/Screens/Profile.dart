@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:paymentapptask/Modals/AccountModal.dart';
 import 'package:paymentapptask/Screens/Payment.dart';
 
 import '../CommonWidgets/image_helper.dart';
@@ -180,11 +181,11 @@ class ProfilePage extends StatelessWidget {
                       ),
                       child: ListTile(
                         leading: Icon(
-                          Icons.person,
-                          color: GREY,
+                          accountScreenModal[index].icon,
+                          color: Colors.grey,
                         ),
                         title: Text(
-                          'Personal Info',
+                          accountScreenModal[index].name,
                           style: GoogleFonts.poppins(
                               fontSize: 18, color: Colors.black),
                         ),
@@ -195,7 +196,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  childCount: 10,
+                  childCount: accountScreenModal.length,
                 ),
               ),
             ],
