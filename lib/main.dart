@@ -5,6 +5,7 @@ import 'package:paymentapptask/Screens/HomePage.dart';
 import 'package:paymentapptask/Screens/Profile.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
+import 'Screens/BottomTab.dart';
 import 'Screens/Payment.dart';
 
 void main() {
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       ),
 
       ///First Widget Which Will Render On Screen
-      home: const HomePage(),
+      home: const BottomTabScreen(),
     );
   }
 }
