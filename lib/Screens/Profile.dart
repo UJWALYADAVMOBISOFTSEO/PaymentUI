@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paymentapptask/Modals/AccountModal.dart';
+import 'package:paymentapptask/Modals/ProfileModal.dart';
 import 'package:paymentapptask/Screens/Payment.dart';
 
 import '../CommonWidgets/image_helper.dart';
 import '../Global/colors.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   final String imageUrl;
   final String name;
   final String email;
@@ -17,6 +18,49 @@ class ProfilePage extends StatelessWidget {
       required this.imageUrl,
       required this.name,
       required this.email});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final List<Map<String, dynamic>> _allUsers = accountScreenModal
+      .map((modal) => {
+            'id': modal.id,
+            'icon': modal.icon,
+            'name': modal.name,
+          })
+      .toList();
+
+  // This list holds the data for the list view
+  List<Map<String, dynamic>> _foundUsers = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    // at the beginning, all users are shown
+    _foundUsers = _allUsers;
+    super.initState();
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<Map<String, dynamic>> results = [];
+    if (enteredKeyword.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      results = _allUsers;
+    } else {
+      results = _allUsers
+          .where((user) =>
+              user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+    }
+
+    // Refresh the UI
+    setState(() {
+      _foundUsers = results;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +91,8 @@ class ProfilePage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(18.0),
                         child: TextField(
-                          scrollPadding: EdgeInsets.only(bottom: 90),
+                          onChanged: (value) => _runFilter(value),
+                          scrollPadding: const EdgeInsets.only(bottom: 90),
                           cursorColor: DARKGREY,
                           style: const TextStyle(color: DARKGREY),
                           decoration: InputDecoration(
@@ -112,7 +157,7 @@ class ProfilePage extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(6.0),
                                     child: ImageHelper(
-                                      image: imageUrl,
+                                      image: widget.imageUrl,
                                       imageType: ImageType.asset,
                                       imageShape: ImageShape.circle,
                                     ),
@@ -121,7 +166,7 @@ class ProfilePage extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 14.0),
                                   child: Text(
-                                    name,
+                                    widget.name,
                                     style: GoogleFonts.poppins(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -131,7 +176,7 @@ class ProfilePage extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 4.0),
                                   child: Text(
-                                    email,
+                                    widget.email,
                                     style: GoogleFonts.poppins(
                                         color: Colors.black,
                                         fontSize: 14,
@@ -149,8 +194,8 @@ class ProfilePage extends StatelessWidget {
                                   Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
                                           builder: (context) => Payment(
-                                                imageUrl: imageUrl,
-                                                name: name,
+                                                imageUrl: widget.imageUrl,
+                                                name: widget.name,
                                               )));
                                 },
                                 child: Text(
@@ -165,40 +210,52 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   )),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => Padding(
-                    padding: const EdgeInsets.only(
-                        top: 8.0, bottom: 8.0, left: 18, right: 18),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: GREY,
-                            width: 1.0,
+              _foundUsers.isNotEmpty
+                  ? SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) => Padding(
+                          key: ValueKey(_foundUsers[index]["id"]),
+                          padding: const EdgeInsets.only(
+                              top: 8.0, bottom: 8.0, left: 18, right: 18),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: GREY,
+                                  width: 1.0,
+                                ),
+                              ),
+                            ),
+                            child: ListTile(
+                              leading: Icon(
+                                _foundUsers[index]['icon'],
+                                color: Colors.grey,
+                              ),
+                              title: Text(
+                                _foundUsers[index]['name'].toString(),
+                                style: GoogleFonts.poppins(
+                                    fontSize: 18, color: Colors.black),
+                              ),
+                              trailing: const Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.blue,
+                              ),
+                            ),
                           ),
                         ),
+                        childCount: _foundUsers.length,
                       ),
-                      child: ListTile(
-                        leading: Icon(
-                          accountScreenModal[index].icon,
-                          color: Colors.grey,
-                        ),
-                        title: Text(
-                          accountScreenModal[index].name,
-                          style: GoogleFonts.poppins(
-                              fontSize: 18, color: Colors.black),
-                        ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.blue,
-                        ),
+                    )
+                  : SliverToBoxAdapter(
+                      child: Center(
+                      child: Text(
+                        'No data Available',
+                        style: GoogleFonts.poppins(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
                       ),
-                    ),
-                  ),
-                  childCount: accountScreenModal.length,
-                ),
-              ),
+                    )),
             ],
           ),
         ),
