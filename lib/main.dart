@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:paymentapptask/Global/colors.dart';
 import 'package:paymentapptask/Screens/HomePage.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
@@ -9,21 +10,8 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    ///Here i made MyApp StateFul As i want to hide statusBar of Apllication
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

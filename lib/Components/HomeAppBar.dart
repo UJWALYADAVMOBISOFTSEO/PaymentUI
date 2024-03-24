@@ -14,7 +14,7 @@ class HomeAppBar extends StatelessWidget {
         pinned: true,
         floating: true,
         expandedHeight: 610,
-        backgroundColor: GREY,
+        backgroundColor: Colors.white,
         bottom: AppBar(
           toolbarHeight: 150,
           backgroundColor: Colors.white,
@@ -27,8 +27,8 @@ class HomeAppBar extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: TextField(
-                    scrollPadding: EdgeInsets.only(bottom:90),
-                    cursorColor: GREY,
+                    scrollPadding: EdgeInsets.only(bottom: 90),
+                    cursorColor: DARKGREY,
                     style: const TextStyle(color: DARKGREY),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -87,202 +87,214 @@ class HomeAppBar extends StatelessWidget {
         ),
         flexibleSpace: FlexibleSpaceBar(
           background: Padding(
-            padding: const EdgeInsets.only(left: 18.0, right: 18.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                SizedBox(
-                  height: 70,
-                  child: Row(
-                    children: [
-                      Expanded(
-                          flex: 9,
-                          child: Row(
-                            children: [
-                              const Expanded(
-                                flex: 1,
-                                child: ImageHelper(
-                                  image: 'assets/images/AdminProfile.png',
-                                  imageType: ImageType.asset,
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 4,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Hi Ujwal,',
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        ),
-                                        Text(
-                                          "Here's your spending dashboard",
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        ),
-                                      ],
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: GREY,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(35),
+                      topRight: Radius.circular(35))),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    SizedBox(
+                      height: 80,
+                      child: Row(
+                        children: [
+                          Expanded(
+                              flex: 13,
+                              child: Row(
+                                children: [
+                                  const Expanded(
+                                    flex: 1,
+                                    child: ImageHelper(
+                                      image: 'assets/images/AdminProfile.png',
+                                      imageType: ImageType.asset,
                                     ),
-                                  )),
-                            ],
-                          )),
-                      const Expanded(
-                          flex: 1,
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: Icon(
-                              Icons.notifications,
-                              color: DARKGREY,
-                            ),
-                          )),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 120,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          flex: 1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '\$204.05',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 38,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                'Your Balance',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 16, color: DARKGREY),
-                              ),
-                            ],
-                          )),
-                      Container(
-                        height: 100,
-                        width: 2,
-                        color: Colors.grey,
+                                  ),
+                                  Expanded(
+                                      flex: 4,
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Hi Ujwal,',
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black),
+                                            ),
+                                            Text(
+                                              "Here's your spending dashboard",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                ],
+                              )),
+                          const Expanded(
+                              flex: 1,
+                              child: Align(
+                                alignment: Alignment.topRight,
+                                child: Icon(
+                                  Icons.notifications,
+                                  color: DARKGREY,
+                                ),
+                              )),
+                        ],
                       ),
-                      Expanded(
-                          flex: 1,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 120,
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Row(
+                        children: [
+                          Expanded(
+                              flex: 1,
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '30',
+                                    '\$204.05',
                                     style: GoogleFonts.poppins(
                                         fontSize: 38,
-                                        color: Colors.blue,
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    'Last Days',
+                                    'Your Balance',
                                     style: GoogleFonts.poppins(
                                         fontSize: 16, color: DARKGREY),
                                   ),
                                 ],
-                              ),
-                              const Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.blue,
-                                size: 35,
-                              )
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  height: 152,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Send Again',
-                        style: GoogleFonts.poppins(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return SizedBox(
-                              width: 90,
-                              child: Column(
+                              )),
+                          Container(
+                            height: 100,
+                            width: 2,
+                            color: Colors.grey,
+                          ),
+                          Expanded(
+                              flex: 1,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    height: 65,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(3.0),
-                                      child: ImageHelper(
-                                        image: 'assets/images/AdminProfile.png',
-                                        imageType: ImageType.asset,
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '30',
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 38,
+                                            color: Colors.blue,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                    ),
+                                      Text(
+                                        'Last Days',
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 16, color: DARKGREY),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 1, right: 1),
-                                    child: Wrap(
-                                      children: [
-                                        Text(
-                                          'Ujwal Yadav',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 14,
-                                              color: DARKGREY,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
+                                  const Icon(
+                                    Icons.arrow_drop_down,
+                                    color: Colors.blue,
+                                    size: 35,
                                   )
                                 ],
-                              ),
-                            );
-                          },
-                        ),
-                      )
-                    ],
-                  ),
+                              )),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 152,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Send Again',
+                            style: GoogleFonts.poppins(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 10,
+                              itemBuilder: (context, index) {
+                                return SizedBox(
+                                  width: 90,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 65,
+                                        decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(3.0),
+                                          child: ImageHelper(
+                                            image:
+                                                'assets/images/AdminProfile.png',
+                                            imageType: ImageType.asset,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 1, right: 1),
+                                        child: Wrap(
+                                          children: [
+                                            Text(
+                                              'Ujwal Yadav',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 14,
+                                                  color: DARKGREY,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ));
